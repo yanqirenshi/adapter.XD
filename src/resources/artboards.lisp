@@ -1,7 +1,7 @@
 (in-package :adapter.xd)
 
-(defun resouces-data-artboards (resouces-data)
-  (getf resouces-data :|artboards|))
+(defun resouces-data-artboards (&optional (plist (resouces-data)))
+  (getf plist :|artboards|))
 
 (defclass artboard ()
   ((id              :reader id              :initarg :id)

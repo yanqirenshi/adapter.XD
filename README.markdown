@@ -6,6 +6,7 @@
 
 # XD
 
+
 ```
  zip/
   |
@@ -23,9 +24,9 @@
   |                     |
   |                     `--- graphicContent.agc (json)
   |
-  +-- interactions/
+  +-- interactions/  ※済み
   |     |
-  |     `--- interactions.json
+  |     `--- interactions.json  ※ interaction
   |
   +-- META-INF/
   |     |
@@ -39,7 +40,7 @@
   |     |
   |     +--- graphics/
   |     |      |
-  |     |      `--- graphicContent.agc (json)
+  |     |      `--- graphicContent.agc (json)   ※済み artboard
   |     |
   |     `--- ${?} 画像ファイル。拡張子なし。
   |
@@ -54,6 +55,30 @@
   +-- preview.png
   |
   `-- thumbnail.png
+```
+
+### resources/
+
+#### resources/graphics/graphicContent.agc
+
+JSON
+
+```
+'(:|artboards| :have-id ;; key is :|id|
+  :|resources| (:|meta| (:|meta| (:|ux| (:|colorSwatches| :not-have-id
+                                         :|documentLibrary| (:|version| :number
+                                                             :|isStickerSheet| :boolean
+                                                             :|hashedMetadata| nil
+                                                             :|elements| (:have-id :|assetGroupData|))
+                                         :|gridDefaults| (:|defaultGrid| :not-have-id
+                                                          :|layoutOverrides| :not-have-id)
+                                         :|symbols| (:have-id :|group|)
+                                         :|symbolsMetadata| (:|haveNestedSymbolsBeenMigrated| :boolean
+                                                             :|usingNestedSymbolSyncing| :boolean))))
+                :|gradients| nil
+                :|clipPaths| nil)
+  :|children| nil
+  :|version| :string)
 ```
 
 ## ZIP

@@ -8,14 +8,18 @@
                 ((:file "packages")
                  (:file "utils")
                  (:file "zip")
+                 (:file "svg")
                  (:module "resources"
-                  :components ((:file "plist")
-                               (:file "artboards")
+                  :components ((:file "artboards")
                                (:file "resources")
                                (:file "children")
-                               (:file "version")))
+                               (:file "version")
+                               (:file "main")))
                  (:file "interactions")
-                 (:file "artwork")
+                 (:module "artwork"
+                  :components ((:file "artwork")
+                               (:file "artboard")
+                               (:file "pasteboard")))
                  (:file "sharing"))))
   :description ""
   :in-order-to ((test-op (test-op "adapter.xd/tests"))))

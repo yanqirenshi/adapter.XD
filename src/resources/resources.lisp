@@ -1,7 +1,7 @@
 (in-package :adapter.xd)
 
-(defun resouces-data-resources (resouces-data)
-  (getf resouces-data :|resources|))
+(defun resouces-data-resources (&optional (plist (resouces-data)))
+  (getf plist :|resources|))
 
 (defvar *MODEL-RESOURCES*
   '(:|clipPaths| "empty"

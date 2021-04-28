@@ -9,8 +9,39 @@
         (setf out
               (concatenate 'string out l))))))
 
+
+(defvar *filecache* (make-hash-table :test 'equal))
+
+(defun file-timestamp (f)
+  (file-write-date f))
+
+(defun file-size (f)
+  (with-open-file (s f :element-type '(unsigned-byte 8))
+    (file-length s)))
+
+(defun get-cache (f)
+  (let* ((cache (gethash (format nil "~a" f) *filecache*))
+         (timestamp (file-timestamp f))
+         (size (file-size f)))
+
+    (when (and (= timestamp (or (getf cache :timestamp) -1))
+               (= size      (or (getf cache :size) -1)))
+      (getf cache :data))))
+
+(defun set-cache (f data)
+  (let* ((key (format nil "~a" f))
+         (timestamp (file-timestamp f))
+         (size (file-size f)))
+    (progn (setf (gethash key *filecache*)
+                 (list :timestamp timestamp
+                       :size      size
+                       :data      data))
+           data)))
+
 (defun json2plist (f)
-  (jojo:parse (file2str f)))
+  (let ((cache (get-cache f)))
+    (or cache
+        (set-cache f (jojo:parse (file2str f))))))
 
 
 (defun plist-keys (plist)

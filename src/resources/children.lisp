@@ -1,4 +1,4 @@
 (in-package :adapter.xd)
 
-(defun resouces-data-children (resouces-data)
-  (getf resouces-data :|children|))
+(defun resouces-data-children (&optional (plist (resouces-data)))
+  (getf plist :|children|))
