@@ -13,6 +13,6 @@ code {
 }
 
 .hero.is-primary .tabs.is-boxed li.is-active a:not(.button):not(.dropdown-item):not(.tag):not(.pagination-link.is-current) {
-    color: rgb(199, 178, 131);
+    color: rgba(157, 91, 139);
     font-weight: bold;
 }

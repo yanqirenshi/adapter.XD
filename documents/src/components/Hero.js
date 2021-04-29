@@ -4,7 +4,7 @@ import HeroNavbar from './HeroNavbar.js';
 import HeroTabs from './HeroTabs.js';
 
 const style = {
-    backgroundColor: 'rgba(199,178,131)',
+    backgroundColor: 'rgba(157, 91, 139)',
     body: { padding: '4rem 1.5rem' }
 };
 
