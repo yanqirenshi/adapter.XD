@@ -3,16 +3,8 @@
 (defun resouces-data-resources (&optional (plist (resouces-data)))
   (getf plist :|resources|))
 
-(defvar *MODEL-RESOURCES*
-  '(:|clipPaths| "empty"
-    :|gradients| "empty"
-    :|meta| (:|ux| (:|symbolsMetadata| (:|usingNestedSymbolSyncing| "boolean"
-                                        :|haveNestedSymbolsBeenMigrated| "boolean")
-                    :|symbols| "list (plist)"
-                    :|gridDefaults| (:|layoutOverrides| "list (plist)"
-                                     :|defaultGrid| "plist")
-                    :|documentLibrary| (:|elements| "list (plist)"
-                                        :|hashedMetadata| "empty"
-                                        :|isStickerSheet| "boolean"
-                                        :|version| "number")
-                    :|colorSwatches| "list (plist)"))))
+(defun resouces-data-symbols (&optional (plist (resouces-data)))
+  (getf (getf (getf (getf plist :|resources|) :|meta|) :|ux|) :|symbols|))
+
+(defun resouces-data-elements (&optional (plist (resouces-data)))
+  (getf (getf (getf (getf (getf plist :|resources|) :|meta|) :|ux|) :|documentLibrary|) :|elements|))

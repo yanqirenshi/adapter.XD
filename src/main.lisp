@@ -8,7 +8,7 @@
    (interactions :reader interactions :initarg :interactions)
    (sharing      :reader sharing      :initarg :sharing)
    ;;
-   (pool :reader pool :initform nil)))
+   (pool :reader pool :initform (make-instance 'pool))))
 
 
 (defun xd2xd (&optional (base-path *zip-root*))
@@ -20,4 +20,6 @@
                    :pasteboard (artwork-pasteboard-data)
                    :interactions (interactions-data)
                    :sharing nil)))
+    (add (pool xd)
+         (plist2artboards (resouces-data-artboards (resources xd))))
     xd))

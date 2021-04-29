@@ -4,6 +4,7 @@ import * as Bulma from 'react-bulma-components';
 
 export default function Section (props) {
     const title = props.title;
+    const leve = props.level || 3;
     const subtitle = props.subtitle;
     const children = props.children;
     const style = {
@@ -16,14 +17,14 @@ export default function Section (props) {
           <Bulma.Container>
 
             {title &&
-             <Bulma.Heading>
+             <Bulma.Heading size={leve}>
                {title}
              </Bulma.Heading>}
 
             {subtitle &&
-              <Bulma.Heading subtitle>
-                {subtitle}
-              </Bulma.Heading>}
+             <Bulma.Heading subtitle>
+               {subtitle}
+             </Bulma.Heading>}
 
             {children}
 

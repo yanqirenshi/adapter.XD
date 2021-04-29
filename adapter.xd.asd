@@ -20,6 +20,7 @@
                   :components ((:file "artboard")
                                (:file "pasteboard")))
                  (:file "sharing")
+                 (:file "pool")
                  (:file "main"))))
   :description ""
   :in-order-to ((test-op (test-op "adapter.xd/tests"))))
