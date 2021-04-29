@@ -2,6 +2,12 @@
 
 ## Usage
 
+```
+(xd2xd)
+
+xd ---> zip --- json2plist ---> plist ---> checker
+```
+
 ## Installation
 
 # XD

@@ -1,14 +1,9 @@
 (in-package :adapter.xd)
 
-;;;  zip/
-;;;   |
-;;;   +-- artwork
-;;;   |     |
-;;;   |     +--- artboard-${id}/
-;;;   |            |
-;;;   |            `--- graphics/
-;;;   |                    |
-;;;   |                    `--- graphicContent.agc (json)
+(defun artwork-artboards-data ()
+  (mapcar #'(lambda (pathname)
+              (json2plist (format nil "~a~a" pathname "/graphics/graphicContent.agc")))
+          (directory (filepath "/artwork/artboard-*"))))
 
 (defun artwork-artboard-data (artboard-id)
   (let ((file (format nil

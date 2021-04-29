@@ -17,10 +17,10 @@
                                (:file "main")))
                  (:file "interactions")
                  (:module "artwork"
-                  :components ((:file "artwork")
-                               (:file "artboard")
+                  :components ((:file "artboard")
                                (:file "pasteboard")))
-                 (:file "sharing"))))
+                 (:file "sharing")
+                 (:file "main"))))
   :description ""
   :in-order-to ((test-op (test-op "adapter.xd/tests"))))
 
