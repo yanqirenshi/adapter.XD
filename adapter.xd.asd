@@ -9,18 +9,30 @@
                  (:file "utils")
                  (:file "zip")
                  (:file "svg")
-                 (:module "resources"
-                  :components ((:file "artboards")
-                               (:file "resources")
-                               (:file "children")
-                               (:file "version")
-                               (:file "main")))
-                 (:file "interactions")
-                 (:module "artwork"
-                  :components ((:file "artboard")
-                               (:file "pasteboard")))
-                 (:file "sharing")
+                 (:module "dao"
+                  :components ((:file "classes")
+                               (:file "operators")
+                               (:module "resources"
+                                :components ((:file "artboards")
+                                             (:file "resources")
+                                             (:file "children")
+                                             (:file "version")
+                                             (:file "main")))
+                               (:file "interactions")
+
+                               (:module "artwork"
+                                :components ((:file "artboard")
+                                             (:file "pasteboard")))
+
+                               (:file "sharing")))
                  (:file "pool")
+                 (:module "xd"
+                  :components ((:file "xd")))
+                 (:module "checker"
+                  :components ((:file "classes")
+                               (:file "operators")))
+                 (:module "sync"
+                  :components ((:file "main")))
                  (:file "main"))))
   :description ""
   :in-order-to ((test-op (test-op "adapter.xd/tests"))))

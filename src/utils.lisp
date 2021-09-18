@@ -48,3 +48,26 @@
   (when plist
     (cons (car plist)
           (plist-keys (cddr plist)))))
+
+(defun check-plist-keys (label plist master-plist)
+  (let ((x (remove nil
+                   (mapcar #'(lambda (key)
+                               (unless (find key master-plist)
+                                 key))
+                           (plist-keys plist)))))
+    (when x
+      (format t "~a: ~a~%" label x))))
+
+;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;
+;;;;; 4 statement
+;;;;;
+;;;;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun join (&rest list)
+  (labels ((core (list)
+             (alexandria:when-let ((str (car list)))
+               (concatenate 'string
+                            (string-trim '(#\Space #\Tab #\Newline) str)
+                            " "
+                            (core (cdr list))))))
+    (core list)))
