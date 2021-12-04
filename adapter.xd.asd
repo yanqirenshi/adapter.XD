@@ -2,7 +2,7 @@
   :version "0.1.0"
   :author ""
   :license ""
-  :depends-on (:jonathan)
+  :depends-on (:jonathan :local-time :api.neo4j)
   :components ((:module "src"
                 :components
                 ((:file "packages")

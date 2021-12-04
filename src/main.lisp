@@ -38,3 +38,28 @@
   *index*)
 
 (defun sync () nil)
+
+
+;;;;;
+;;;;; examples
+;;;;;
+(defun artboads2json (xd)
+  (jojo:to-json
+   (mapcar #'(lambda (d)
+               (list :|id| (id d)
+                     :|name| (name d)
+                     :|x| (x d)
+                     :|y| (y d)
+                     :|width|  (width d)
+                     :|height| (height d)
+                     :|viewportHeight| (VIEWPORT-HEIGHT d)))
+           (plist2artboards (resouces-data-artboards (resources xd))))))
+
+(defun components2csv (xd)
+  (let ((data (resouces-data-resources (resources xd))))
+    (mapcar #'(lambda (d)
+                (format t "~a,~a,~a~%"
+                        (getf d :|id|)
+                        (getf d :|name|)
+                        (getf d :|type|)))
+            (getf (getf (getf data :|meta|) :|ux|) :|symbols|))))
