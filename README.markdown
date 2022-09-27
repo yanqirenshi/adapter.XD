@@ -8,6 +8,10 @@
 xd ---> zip --- json2plist ---> plist ---> checker
 ```
 
+```
+(xd:xd2jsons (xd:xd2xd) #p"c:/Users/user-name/Desktop/")
+```
+
 ## Installation
 
 # XD

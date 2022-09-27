@@ -57,9 +57,27 @@
 
 (defun components2csv (xd)
   (let ((data (resouces-data-resources (resources xd))))
-    (mapcar #'(lambda (d)
-                (format t "~a,~a,~a~%"
-                        (getf d :|id|)
-                        (getf d :|name|)
-                        (getf d :|type|)))
-            (getf (getf (getf data :|meta|) :|ux|) :|symbols|))))
+    (jojo:to-json
+     (mapcar #'(lambda (d)
+                 (list :|backup| :false
+                       :|id|     (getf d :|id|)
+                       :|name|   (getf d :|name|)
+                       :|type|   (getf d :|type|)))
+             (getf (getf (getf data :|meta|) :|ux|) :|symbols|)))))
+
+
+;;;;;
+;;;;; main ?
+;;;;;
+(defun xd2jsons (xd dir)
+  (with-open-file (s (merge-pathnames dir "xd_artboads.json")
+                     :direction :output
+                     :if-does-not-exist :create
+                     :if-exists :overwrite)
+    (format s (xd:artboads2json xd)))
+  (with-open-file (s (merge-pathnames dir "xd_components.json")
+                     :direction :output
+                     :if-does-not-exist :create
+                     :if-exists :overwrite)
+    (format s (xd:components2csv xd)))
+  nil)
